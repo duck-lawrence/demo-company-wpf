@@ -32,7 +32,7 @@ namespace DemoArchitecture_SE192160
         private async void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             string email = txtEmail.Text;
-            string password = txtPassword.Text;
+            string password = txtPassword.Password;
             try
             {
                 var account = await _accountService.LoginAsync(email, password);

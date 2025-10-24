@@ -11,11 +11,13 @@ namespace DemoArchitecture_SE192160
     public partial class MainWindow : Window
     {
         private readonly IEmployeeService _employeeService;
+        private readonly IDepartmentService _departmentService;
 
         public MainWindow()
         {
             InitializeComponent();
             _employeeService = new EmployeeService();
+            _departmentService = new DepartmentService();
             this.Loaded += MainWindow_Loaded; // đăng ký sự kiện Loaded
         }
 
@@ -24,10 +26,13 @@ namespace DemoArchitecture_SE192160
             try
             {
                 dgEmployees.ItemsSource = await _employeeService.GetAllAsync(null);
+                CbxDepartment.ItemsSource = await _departmentService.GetAllAsync();
+                CbxDepartment.DisplayMemberPath = "Name";
+                CbxDepartment.SelectedValuePath = "Id";
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi tải dữ liệu: {ex.Message}");
+                MessageBox.Show($"Error when get data: {ex.Message}");
             }
         }
 
@@ -59,7 +64,7 @@ namespace DemoArchitecture_SE192160
             }
         }
 
-        private void BtnCreate_Click()
+        private void BtnCreate_Click(object sender, RoutedEventArgs e)
         {
         }
     }

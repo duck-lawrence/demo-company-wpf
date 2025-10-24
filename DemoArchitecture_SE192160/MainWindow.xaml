@@ -48,6 +48,18 @@
             <Label Content="Name" />
             <TextBox x:Name="TxtName" Width="200" />
         </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Address" />
+            <TextBox x:Name="TxtAddress" Width="200" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Age" />
+            <TextBox x:Name="TxtAge" Width="200" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Department" />
+            <ComboBox x:Name="CbxDepartment" Width="200" />
+        </StackPanel>
 
         <Button x:Name="BtnCreate" Content="Create" Click="BtnCreate_Click" />
         <Button x:Name="BtnDelete" Content="Delete" Click="BtnDelete_Click" />
