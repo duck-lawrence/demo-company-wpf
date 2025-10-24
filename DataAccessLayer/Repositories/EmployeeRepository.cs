@@ -43,5 +43,12 @@ namespace DataAccessLayer.Repositories
             }
             return await query.ToListAsync();
         }
+
+        public async Task AddAsync(Employee employee)
+        {
+            employee.Id = _dbContext.Employees.Max(e => e.Id) + 1;
+            await _dbContext.Employees.AddAsync(employee);
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }

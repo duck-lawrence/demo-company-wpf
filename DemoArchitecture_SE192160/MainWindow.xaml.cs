@@ -64,8 +64,19 @@ namespace DemoArchitecture_SE192160
             }
         }
 
-        private void BtnCreate_Click(object sender, RoutedEventArgs e)
+        private async void BtnCreate_Click(object sender, RoutedEventArgs e)
         {
+            // Khởi tạo 1 employee mới
+            var employee = new Employee()
+            {
+                Name = TxtName.Text,
+                Address = TxtAddress.Text,
+                Age = int.TryParse(TxtAge.Text, out int age) ? age : null,
+                DepartmentId = (int?)CbxDepartment.SelectedValue
+            };
+
+            await _employeeService.AddAsync(employee);
+            dgEmployees.ItemsSource = await _employeeService.GetAllAsync(null);
         }
     }
 

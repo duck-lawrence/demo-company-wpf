@@ -28,5 +28,10 @@ namespace BusinessLogicLayer.Services
         {
             return await _employeeRepository.GetAllAsync(key) ?? [];
         }
+
+        public async Task AddAsync(Employee employee)
+        {
+            await _employeeRepository.AddAsync(employee);
+        }
     }
 }
