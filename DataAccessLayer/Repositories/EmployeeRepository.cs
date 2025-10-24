@@ -7,6 +7,7 @@ using DataAccessLayer.Abstractions;
 using DataAccessLayer.AppDbContext;
 using DataAccessLayer.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 
 namespace DataAccessLayer.Repositories
 {
@@ -48,6 +49,22 @@ namespace DataAccessLayer.Repositories
         {
             employee.Id = _dbContext.Employees.Max(e => e.Id) + 1;
             await _dbContext.Employees.AddAsync(employee);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(Employee employee)
+        {
+            var employeeFromDb = await _dbContext.Employees.FindAsync(employee.Id)
+                ?? throw new DirectoryNotFoundException("employee not found");
+
+            if (!string.IsNullOrEmpty(employee.Name)) employeeFromDb.Name = employee.Name;
+
+            if (!string.IsNullOrEmpty(employee.Address)) employeeFromDb.Address = employee.Address;
+
+            if (employee.DepartmentId != null) employeeFromDb.DepartmentId = employee.DepartmentId;
+
+            if (employee.Age != null) employeeFromDb.Age = employee.Age;
+
             await _dbContext.SaveChangesAsync();
         }
     }

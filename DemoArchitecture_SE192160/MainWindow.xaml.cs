@@ -78,10 +78,42 @@ namespace DemoArchitecture_SE192160
             await _employeeService.AddAsync(employee);
             dgEmployees.ItemsSource = await _employeeService.GetAllAsync(null);
         }
-    }
 
-    // Architecture: 3-layer
-    // Presentation layer (UI): Giao diện người dùng
-    // Business logic layer (BLL): Xử lý yêu cầu nghiệp vụ
-    // Data access layer (DAL): Lấy dữ liệu từ database
+        private void dgEmployees_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            // click dòng nào thì đổ data dòng đó vào form nhập
+            if (dgEmployees.SelectedItem is Employee employee)
+            {
+                TxtName.Text = employee.Name;
+                TxtAddress.Text = employee.Address;
+                TxtAge.Text = employee.Age?.ToString() ?? "";
+                CbxDepartment.SelectedValue = employee.DepartmentId;
+            }
+        }
+
+        private async void BtnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            var employee = new Employee()
+            {
+                //Id = ((Employee)dgEmployees.SelectedItem).Id,
+                Name = TxtName.Text,
+                Address = TxtAddress.Text,
+                Age = int.TryParse(TxtAge.Text, out int age) ? age : null,
+                DepartmentId = (int?)CbxDepartment.SelectedValue
+            };
+
+            if (dgEmployees.SelectedItem is Employee selectedEmployee)
+            {
+                employee.Id = selectedEmployee.Id;
+            }
+
+            await _employeeService.UpdateAsync(employee);
+            dgEmployees.ItemsSource = await _employeeService.GetAllAsync(null);
+        }
+
+        // Architecture: 3-layer
+        // Presentation layer (UI): Giao diện người dùng
+        // Business logic layer (BLL): Xử lý yêu cầu nghiệp vụ
+        // Data access layer (DAL): Lấy dữ liệu từ database
+    }
 }

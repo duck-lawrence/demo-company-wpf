@@ -33,5 +33,10 @@ namespace BusinessLogicLayer.Services
         {
             await _employeeRepository.AddAsync(employee);
         }
+
+        public async Task UpdateAsync(Employee employee)
+        {
+            await _employeeRepository.UpdateAsync(employee);
+        }
     }
 }

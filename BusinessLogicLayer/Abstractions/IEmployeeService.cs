@@ -13,5 +13,6 @@ namespace BusinessLogicLayer.Abstractions
         Task DeleteAsync(Employee employee);
 
         Task<IEnumerable<Employee>> GetAllAsync(string? key);
+        Task UpdateAsync(Employee employee);
     }
 }

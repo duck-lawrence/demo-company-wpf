@@ -33,7 +33,7 @@
             <TextBox x:Name="TxtSearch" Width="200" />
             <Button x:Name="BtnSearch" Content="Search" Click="BtnSearch_Click" />
         </StackPanel>
-        <DataGrid x:Name="dgEmployees" AutoGenerateColumns="False">
+        <DataGrid x:Name="dgEmployees" AutoGenerateColumns="False" SelectionChanged="dgEmployees_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="30" Binding="{Binding Id}" />
                 <DataGridTextColumn Header="Name" Width="100" Binding="{Binding Name}" />
@@ -62,6 +62,7 @@
         </StackPanel>
 
         <Button x:Name="BtnCreate" Content="Create" Click="BtnCreate_Click" />
+        <Button x:Name="BtnUpdate" Content="Update" Click="BtnUpdate_Click" />
         <Button x:Name="BtnDelete" Content="Delete" Click="BtnDelete_Click" />
     </StackPanel>
 </Window>
