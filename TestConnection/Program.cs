@@ -1,4 +1,4 @@
-﻿using DataAccessLayer.Entities;
+﻿using DataAccessLayer.AppDbContext;
 
 namespace TestConnection
 {

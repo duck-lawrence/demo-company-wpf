@@ -13,5 +13,7 @@ namespace DataAccessLayer.AppDbContext
         DbSet<Account> Accounts { get; set; }
         DbSet<Department> Departments { get; set; }
         DbSet<Employee> Employees { get; set; }
+
+        Task SaveChangesAsync();
     }
 }

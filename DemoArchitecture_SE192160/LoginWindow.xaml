@@ -5,12 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoArchitecture_SE192160"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800">
+        Title="LoginWindow"
+        Height="400" Width="700"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Arial"
+        Background="#FFBAE6FD">
+
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="26" />
+            <Setter Property="Foreground" Value="#FF1E3A8A" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="34" />
+            <Setter Property="Background" Value="#FFF0F9FF" />
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="Height" Value="34" />
+            <Setter Property="Background" Value="#FFF0F9FF" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Background" Value="#FF06B6D4" />
+            <Setter Property="Foreground" Value="#FFFFFFFF" />
+        </Style>
+    </Window.Resources>
+
     <StackPanel>
         <Label Content="Email" />
-        <TextBox Name="txtEmail" />
+        <TextBox Text="admin@company.com" Name="txtEmail" />
         <Label Content="Password" />
-        <TextBox Name="txtPassword" />
-        <Button x:Name="btnLogin" Content="Login" Click="btnLogin_Click" />
+        <PasswordBox Password="@1" Name="txtPassword" />
+        <Button x:Name="btnLogin" IsDefault="True"
+                Content="Login" Click="BtnLogin_Click" />
     </StackPanel>
 </Window>

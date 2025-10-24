@@ -5,8 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoArchitecture_SE192160"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
 
-    </Grid>
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Foreground" Value="#FF1E3A8A" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="16" />
+            <Setter Property="Background" Value="#FFF0F9FF" />
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="Height" Value="16" />
+            <Setter Property="Background" Value="#FFF0F9FF" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Background" Value="#FF06B6D4" />
+            <Setter Property="Foreground" Value="#FFFFFFFF" />
+        </Style>
+    </Window.Resources>
+
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBox x:Name="TxtSearch" Width="200" />
+            <Button x:Name="BtnSearch" Content="Search" Click="BtnSearch_Click" />
+        </StackPanel>
+        <DataGrid x:Name="dgEmployees" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="30" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Name" Width="100" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Address" Width="*" Binding="{Binding Address}" />
+                <DataGridTextColumn Header="Age" Width="30" Binding="{Binding Age}" />
+                <DataGridTextColumn Header="Department" Width="200" Binding="{Binding Department.Name}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Textbox để nhập data cho create -->
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Name" />
+            <TextBox x:Name="TxtName" Width="200" />
+        </StackPanel>
+
+        <Button x:Name="BtnCreate" Content="Create" Click="BtnCreate_Click" />
+        <Button x:Name="BtnDelete" Content="Delete" Click="BtnDelete_Click" />
+    </StackPanel>
 </Window>

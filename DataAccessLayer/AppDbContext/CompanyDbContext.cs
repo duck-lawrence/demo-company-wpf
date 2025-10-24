@@ -84,4 +84,9 @@ public partial class CompanyDbContext : DbContext, ICompanyDbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    public async Task SaveChangesAsync()
+    {
+        await base.SaveChangesAsync();
+    }
 }

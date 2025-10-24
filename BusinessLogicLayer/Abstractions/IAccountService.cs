@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccessLayer.Entities;
 
-namespace DataAccessLayer.Abstractions
+namespace BusinessLogicLayer.Abstractions
 {
-    public interface IAccountRepository
+    public interface IAccountService
     {
-        Task<Account?> GetByEmailAndPasswordAsync(string email, string password);
+        Task<Account> LoginAsync(string email, string password);
     }
 }

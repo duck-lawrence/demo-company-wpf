@@ -7,8 +7,10 @@ using DataAccessLayer.Entities;
 
 namespace DataAccessLayer.Abstractions
 {
-    public interface IAccountRepository
+    public interface IEmployeeRepository
     {
-        Task<Account?> GetByEmailAndPasswordAsync(string email, string password);
+        Task DeleteAsync(Employee employee);
+
+        Task<IEnumerable<Employee>> GetAllAsync(string? key);
     }
 }
